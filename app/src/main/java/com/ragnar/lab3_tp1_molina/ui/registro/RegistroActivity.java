@@ -64,7 +64,7 @@ public class RegistroActivity extends AppCompatActivity {
         etEmailRegistro = findViewById(R.id.etEmailRegistro);
         etContraseñaRegistro = findViewById(R.id.etContraseñaRegistro);
         btnGuardar = findViewById(R.id.btnGuardar);
-        mView.leerDatos();
+        mView.leerDatos(getIntent());
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override

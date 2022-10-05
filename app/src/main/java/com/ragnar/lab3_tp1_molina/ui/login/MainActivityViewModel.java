@@ -25,6 +25,7 @@ public class MainActivityViewModel extends AndroidViewModel {
         if(ApiClient.login(context,mail, pass) != null){
             Intent i = new Intent(context, RegistroActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.putExtra("registro", 0);
             context.startActivity(i);
         }else{
             Toast.makeText(context, "Email o Contraseña equivocados.", Toast.LENGTH_SHORT).show();
@@ -33,6 +34,7 @@ public class MainActivityViewModel extends AndroidViewModel {
     public void registro(){
         Intent i = new Intent(context, RegistroActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.putExtra("registro", 1);
         context.startActivity(i);
     }
 

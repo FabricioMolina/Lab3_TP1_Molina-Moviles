@@ -2,6 +2,7 @@ package com.ragnar.lab3_tp1_molina.ui.registro;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
@@ -58,21 +59,24 @@ public class RegistroViewModel extends AndroidViewModel {
 
 
 
-    public void leerDatos(){
-        Usuario usuario = ApiClient.leer(context);
-        if (usuario.getApellido() != "null"){
-            long dni = usuario.getDni();
-            String nombre = usuario.getNombre();
-            String apellido = usuario.getApellido();
-            String email = usuario.getEmail();
-            String contraseña = usuario.getContraseña();
+    public void leerDatos(Intent i){
+        if(i.getIntExtra("registro", -1) == 0){
+            Usuario usuario = ApiClient.leer(context);
+            if (usuario.getApellido() != "null"){
+                long dni = usuario.getDni();
+                String nombre = usuario.getNombre();
+                String apellido = usuario.getApellido();
+                String email = usuario.getEmail();
+                String contraseña = usuario.getContraseña();
 
-            this.dniMutable.setValue(dni);
-            this.nombreMutable.setValue(nombre);
-            this.apellidoMutable.setValue(apellido);
-            this.emailMutable.setValue(email);
-            this.contraseñaMutable.setValue(contraseña);
+                this.dniMutable.setValue(dni);
+                this.nombreMutable.setValue(nombre);
+                this.apellidoMutable.setValue(apellido);
+                this.emailMutable.setValue(email);
+                this.contraseñaMutable.setValue(contraseña);
+            }
         }
+
 
     }
     public void guardarDatos(Usuario user){
